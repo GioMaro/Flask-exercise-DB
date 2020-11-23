@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block Registerdb %}
+    <<div class="row">
+      <div class="col-lg-8 mb-4">
+        <h3>Registration Form</h3>
+          {% if session.get('Name') %}
+          <h3>Hello {{ session.get('Name') }}</h3>
+          {% else %}
+          <h3>Hello stranger</h3>
+          {% endif %}
+        <form method="post">
+          <div class="control-group form-group">
+            <div class="controls">
+              {{ reg.name.label }}
+              {{ reg.name(class="form-control") }}
+                {% for error in reg.name.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+              <p class="help-block"></p>
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              {{ reg.surname.label }}
+              {{ reg.surname(class="form-control") }}
+                {% for error in reg.surname.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+            {{ reg.email.label }}
+              {{ reg.email(class="form-control") }}
+                {% for error in reg.email.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+            {{ reg.password.label }}
+              {{ reg.password(class="form-control") }}
+                {% for error in reg.password.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+          </div>
+        {{ reg.submit(class="btn btn-primary") }}
+        {{ reg.hidden_tag() }}
+        </form>
+      </div>
+
+    </div>
+{% endblock Registerdb %}

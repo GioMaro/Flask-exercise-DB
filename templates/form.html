@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+
+{% block Register %}
+    <<div class="row">
+      <div class="col-lg-8 mb-4">
+        <h3>Registration form</h3>
+          {% if session.get('name') %}
+          <h3>Hello {{ session.get('name') }}</h3>
+          {% else %}
+          <h3>Hello stranger</h3>
+          {% endif %}
+        <form method="post">
+          <div class="control-group form-group">
+            <div class="controls">
+              {{ form.name.label }}
+              {{ form.name(class="form-control") }}
+                {% for error in form.name.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+              <p class="help-block"></p>
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              {{ form.surname.label }}
+              {{ form.surname(class="form-control") }}
+                {% for error in form.surname.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+            {{ form.email.label }}
+              {{ form.email(class="form-control") }}
+                {% for error in form.email.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+            {{ form.password.label }}
+              {{ form.password(class="form-control") }}
+                {% for error in form.password.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+          </div>
+        {{ form.submit(class="btn btn-primary") }}
+        {{ form.hidden_tag() }}
+        </form>
+      </div>
+
+    </div>
+{% endblock Register %}

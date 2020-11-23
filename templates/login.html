@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block login %}
+    <<div class="row">
+      <div class="col-lg-8 mb-4">
+        <h3>Login form</h3>
+          {% if session.get('Name') %}
+          <h3>Hello {{ session.get('Name') }}</h3>
+          {% else %}
+          <h3>Hello stranger</h3>
+          {% endif %}
+        <form method="post">
+          <div class="control-group form-group">
+            <div class="controls">
+              {{ log.username.label }}
+              {{ log.username(class="form-control") }}
+                {% for error in log.username.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+              <p class="help-block"></p>
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+            {{ log.password.label }}
+              {{ log.password(class="form-control") }}
+                {% for error in log.password.errors %}
+                <div class="'alert alert-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+          </div>
+        {{ log.submit(class="btn btn-primary") }}
+        {{ log.hidden_tag() }}
+        </form>
+      </div>
+
+    </div>
+{% endblock login %}

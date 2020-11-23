@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content1 %}
+    {% if posts %}
+    {% for post in posts %}
+        <p> {{ post['date_posted'] }}</p>
+        <ul>
+        <li><b>{{ post['title'] }}</b></li>
+        <li>{{ post['content'] }}</li>
+        </ul>
+        <blockquote class="blockquote">
+          <footer class="blockquote-footer">{{ post['author'] }}
+          </footer>
+        </blockquote>
+
+    {% endfor %}
+    {% endif %}
+{% endblock content1 %}
+
+{% block content2 %}
+    {{ super() }}
+    {% if posts %}
+    {% for post in posts %}
+        <p> {{ post['date_posted'] }}</p>
+        <ul>
+        <li><b>{{ post['title'] }}</b></li>
+        <li>{{ post['content'] }}</li>
+        </ul>
+        <blockquote class="blockquote">
+          <footer class="blockquote-footer">{{ post['author'] }}
+          </footer>
+        </blockquote>
+
+    {% endfor %}
+    {% endif %}
+
+{% endblock content2 %}
